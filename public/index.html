@@ -29,6 +29,15 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+
+    <h1>Assignment 8, Justin Lindo</h1>
+    <p>Enter a list of names with each name seperated by a space. Click "With Replacement" to randomly select a name and put it back in the pool of names, and "Without Replacement" to generate one without returning it to the pool. Click "Clear Text Fields" to clear both input and output.</p>
+    <form method="post" action="https://cs.gmu.edu:8443/offutt/servlet/formHandler">
+    <p>Input:<input name="nameList" placeholder="Enter list here" size="65" value=""></p><p>Output: <input size="65" placeholder="Chosen name will appear here" readonly="" value=""></p>
+    <button type="submit" name="operation" value="With Replacement">With Replacement</button>
+    <button type="submit" name="operation" value="Without Replacement">Without Replacement</button>
+    <button type="submit" name="operation" value="Clear Text Fields">Clear Text Fields</button>
+    <p><a href="">Github Repo</a></p></form>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

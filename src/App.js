@@ -51,7 +51,7 @@ class App extends React.Component {
     // Now time to remove it from the list, and then update the new input display 
     // Remove the item from the array
     const newList = [].concat(stringList); // Clone array with concat or slice(0)
-    newList.splice(randomString.index, 1);
+    newList.splice(stringList.indexOf(randomString), 1);
     stringList = newList;
     // Then update the new input values to the display, everything but the removed value
     this.setState({value: stringList.join(" ")});

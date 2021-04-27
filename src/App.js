@@ -9,43 +9,39 @@ class App extends React.Component {
     super(props);
 
     // Dictionary of state of the user input (value), and output
-    this.stringOne = "";
-
-    this.stringTwo = "";
-
-    this.stringThree = "";
-
-    this.returnString = "";
+    this.state = {
+      // User input
+      value1: '',
+      value2: '',
+      value3: '',
+      output: ''
+    };
 
     // Handling change to the input asyncronously 
-    this.stringOneChange = this.stringOneChange.bind(this);
-    this.stringTwoChange = this.stringTwoChange.bind(this);
-    this.stringThreeChange = this.stringThreeChange.bind(this);
+    this.handleChange1 = this.handleChange1.bind(this);
+    this.handleChange2 = this.handleChange2.bind(this);
+    this.handleChange3 = this.handleChange3.bind(this);
+    // Functions for the buttons
+    this.clear = this.clear.bind(this);
 
   }
-
 
   // For updating the state of the input when a user types, so it displays 
-  stringOneChange(event) {
-    this.stringOne = event.target.value;
+  handleChange1(event) {
+    this.setState({value1: event.target.value});
   }
 
-  stringTwoChange(event) {
-    this.stringTwo = event.target.value;
+  handleChange2(event) {
+    this.setState({value2: event.target.value});
   }
 
-  stringThreeChange(event) {
-    this.stringThree = event.target.value;
+  handleChange3(event) {
+    this.setState({value3: event.target.value});
   }
-
-
-  concatenate() {
-    this.returnString = this.stringOne + this.stringTwo + this.stringThree;
-  }
-
+  
   // Clear the input value, and output
   clear() {
-    this.setState({value: ""});
+    this.setState({value1: "", value2: "", value3: ""});
   }
 
   // Rendering the html
@@ -60,14 +56,14 @@ class App extends React.Component {
           <p>Enter three strings, and choose order of concatenation of the strings.</p>
 
 
-          <p>String 1: <input name="stringInput" id="stringInput" placeholder="" size="65" value={this.stringOne} onChange={this.stringOneChange}/></p>
-          <p>String 2: <input name="stringInput" id="stringInput" placeholder="" size="65" value={this.stringTwo} onChange={this.stringTwoChange}/></p>
-          <p>String 3: <input name="stringInput" id="stringInput" placeholder="" size="65" value={this.stringThree} onChange={this.stringThreeChange}/></p>
+          <p>String 1: <input name="stringInput" id="stringInput" placeholder="" size="65" value={this.state.value1} onChange={this.handleChange1}/></p>
+          <p>String 2: <input name="stringInput" id="stringInput" placeholder="" size="65" value={this.state.value2} onChange={this.handleChange2}/></p>
+          <p>String 3: <input name="stringInput" id="stringInput" placeholder="" size="65" value={this.state.value3} onChange={this.handleChange3}/></p>
           <div className="output">
-            <h2>Output: { this.returnString }</h2>
+            <h2>Output: { this.state.output }</h2>
           </div>
 
-          <button type="submit" name="operation" value="concatenate" onClick = {this.concatenate}>concatenate</button>
+          <button type="submit" name="operation" value="Clear Text Fields" onClick = {this.clear}>Clear Text Fields</button>
 
           <h3>Github Repo:</h3>
           <a

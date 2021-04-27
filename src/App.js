@@ -9,18 +9,11 @@ class App extends React.Component {
     super(props);
 
     // Dictionary of state of the user input (value), and output
-    this.stringOne = {
-      // User input
-      value: ''
-    };
+    this.stringOne = "";
 
-    this.stringTwo = {
-      value: ''
-    };
+    this.stringTwo = "";
 
-    this.stringThree = {
-      value: ''
-    };
+    this.stringThree = "";
 
     this.returnString = "";
 
@@ -34,15 +27,15 @@ class App extends React.Component {
 
   // For updating the state of the input when a user types, so it displays 
   stringOneChange(event) {
-    this.stringOne({value: event.target.value});
+    this.stringOne = event.target.value;
   }
 
   stringTwoChange(event) {
-    this.stringTwo({value: event.target.value});
+    this.stringTwo = event.target.value;
   }
 
   stringThreeChange(event) {
-    this.stringThree({value: event.target.value});
+    this.stringThree = event.target.value;
   }
 
 
@@ -67,9 +60,9 @@ class App extends React.Component {
           <p>Enter three strings, and choose order of concatenation of the strings.</p>
 
 
-          <p>String 1: <input name="stringInput" id="stringInput" placeholder="" size="65" value={this.stringOne.value} onChange={this.stringOneChange}/></p>
-          <p>String 2: <input name="stringInput" id="stringInput" placeholder="" size="65" value={this.stringTwo.value} onChange={this.stringTwoChange}/></p>
-          <p>String 3: <input name="stringInput" id="stringInput" placeholder="" size="65" value={this.stringThree.value} onChange={this.stringThreeChange}/></p>
+          <p>String 1: <input name="stringInput" id="stringInput" placeholder="" size="65" value={this.stringOne} onChange={this.stringOneChange}/></p>
+          <p>String 2: <input name="stringInput" id="stringInput" placeholder="" size="65" value={this.stringTwo} onChange={this.stringTwoChange}/></p>
+          <p>String 3: <input name="stringInput" id="stringInput" placeholder="" size="65" value={this.stringThree} onChange={this.stringThreeChange}/></p>
           <div className="output">
             <h2>Output: { this.returnString }</h2>
           </div>

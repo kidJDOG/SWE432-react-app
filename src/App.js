@@ -40,7 +40,7 @@ class App extends React.Component {
 
 
   concatenate() {
-    this.returnString = this.stringOne.value + this.stringTwo.value + this.stringThree.value;
+    this.returnString = this.stringOne + this.stringTwo + this.stringThree;
   }
 
   // Clear the input value, and output

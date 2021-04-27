@@ -4,19 +4,31 @@ import React from 'react';
 
 
 class App extends React.Component {
+  
   constructor(props) {
     super(props);
 
     // Dictionary of state of the user input (value), and output
-    this.state = {
+    this.stringOne = {
       // User input
-      value: '',
-      // Output, depending on what button is clicked
-      output: ''
+      value: ''
     };
 
+    this.stringTwo = {
+      value: ''
+    };
+
+    this.stringThree = {
+      value: ''
+    };
+
+    this.returnString = "";
+
     // Handling change to the input asyncronously 
-    this.handleChange = this.handleChange.bind(this);
+    this.stringOneChange = this.stringOneChange.bind(this);
+    this.stringTwoChange = this.stringTwoChange.bind(this);
+    this.stringThreeChange = this.stringThreeChange.bind(this);
+
     // Functions for the buttons
     this.withReplace = this.withReplace.bind(this);
     this.withoutReplace = this.withoutReplace.bind(this);
@@ -24,45 +36,28 @@ class App extends React.Component {
 
   }
 
+
   // For updating the state of the input when a user types, so it displays 
-  handleChange(event) {
-    this.setState({value: event.target.value});
+  stringOneChange(event) {
+    this.stringOne({value: event.target.value});
   }
 
-  // Function for choosing one randome string, and having it remain in the collection
-  withReplace() {
-    // Split the string into a list, by spaces
-    const stringList = this.state.value.split(" ");
-    // Choose the random string
-    var randomString = stringList[Math.floor(Math.random() * stringList.length)];
-    // Output the random string
-    this.setState({output: randomString});
+  stringTwoChange(event) {
+    this.stringTwo({value: event.target.value});
   }
 
-  // For choosing random string, and removing it from the collection
-  withoutReplace() {    
-    // Split the string into a list, by spaces
-    var stringList = this.state.value.split(" ");
-    // Choose the random string
-    var randomString = stringList[Math.floor(Math.random() * stringList.length)];
-    // Output the random string
-    this.setState({output: randomString});
+  stringThreeChange(event) {
+    this.stringThree({value: event.target.value});
+  }
 
-    // Now time to remove it from the list, and then update the new input display 
-    // Remove the item from the array
-    const newList = [].concat(stringList); // Clone array with concat or slice(0)
-    // Splice the list at the index of where the value to be removed is at
-    newList.splice(stringList.indexOf(randomString), 1);
-    stringList = newList;
-    // Then update the new input values to the display, everything but the removed value
-    this.setState({value: stringList.join(" ")});
 
+  concatenate() {
+    this.returnString = this.stringOne.value + this.stringTwo.value + this.stringThree.value;
   }
 
   // Clear the input value, and output
   clear() {
     this.setState({value: ""});
-    this.setState({output: ""});
   }
 
   // Rendering the html
@@ -72,23 +67,19 @@ class App extends React.Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
 
-          <h1>Assignment 8<br/>Justin Lindo</h1>
+          <h1>Practice Final<br/>Justin Lindo</h1>
 
-          <p>Enter a list of names with each name seperated by a space.
-          <br/><div className="title">With Replacement:</div> randomly selects a name, and it remains in the collection 
-          <br/><div className="title">Without Replacement:</div> randomly selects a name, and removes it from the collection
-          <br/><div className="title">Clear Text Fields:</div> clears input, and output.</p>
+          <p>Enter three strings, and choose order of concatenation of the strings.</p>
 
 
-          <p>Input: <input name="stringInput" id="stringInput" placeholder="Enter names seperated by spaces here" size="65" value={this.state.value} onChange={this.handleChange}/></p>
-          
+          <p>String 1: <input name="stringInput" id="stringInput" placeholder="" size="65" value={this.stringOne.value} onChange={this.stringOneChange}/></p>
+          <p>String 2: <input name="stringInput" id="stringInput" placeholder="" size="65" value={this.stringTwo.value} onChange={this.stringTwoChange}/></p>
+          <p>String 3: <input name="stringInput" id="stringInput" placeholder="" size="65" value={this.stringThree.value} onChange={this.stringThreeChange}/></p>
           <div className="output">
-            <h2>Output: { this.state.output }</h2>
+            <h2>Output: { this.returnString }</h2>
           </div>
 
-          <button type="submit" name="operation" value="With Replacement" onClick = {this.withReplace}>With Replacement</button>
-          <button type="submit" name="operation" value="Without Replacement" onClick = {this.withoutReplace}>Without Replacement</button>
-          <button type="submit" name="operation" value="Clear Text Fields" onClick = {this.clear}>Clear Text Fields</button>
+          <button type="submit" name="operation" value="concatenate" onClick = {this.concatenate}>concatenate</button>
 
           <h3>Github Repo:</h3>
           <a

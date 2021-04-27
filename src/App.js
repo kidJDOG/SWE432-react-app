@@ -29,11 +29,6 @@ class App extends React.Component {
     this.stringTwoChange = this.stringTwoChange.bind(this);
     this.stringThreeChange = this.stringThreeChange.bind(this);
 
-    // Functions for the buttons
-    this.withReplace = this.withReplace.bind(this);
-    this.withoutReplace = this.withoutReplace.bind(this);
-    this.clear = this.clear.bind(this);
-
   }
 
 
